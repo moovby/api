@@ -1,15 +1,11 @@
 ---
-title: API Reference
+title: Moovby API
 
 language_tabs:
   - shell
   - ruby
   - python
   - javascript
-
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
   - errors
@@ -19,11 +15,11 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Moovby API! This API documentation is created to ease and breeze the communication and process of development team.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+This API documentation should be used within Moovby development team only. It is restricted to expose this API documentation to public.
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+We are currently in the heavy process of rollout our first API implementation and documentation. Stay tune!
 
 # Authentication
 
@@ -186,4 +182,3 @@ This endpoint retrieves a specific kitten.
 Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to retrieve
-
