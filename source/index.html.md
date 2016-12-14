@@ -2,10 +2,7 @@
 title: Moovby API
 
 language_tabs:
-  - shell
-  - ruby
-  - python
-  - javascript
+  - cURL
 
 includes:
   - errors
@@ -15,170 +12,114 @@ search: true
 
 # Introduction
 
-Welcome to the Moovby API! This API documentation is created to ease and breeze the communication and process of development team.
+Welcome to the Moovby API. This API documentation is created to ease and breeze the communication and process of development team.
 
-This API documentation should be used within Moovby development team only. It is restricted to expose this API documentation to public.
+This API documentation should be used internally within Moovby development team only. So it is restricted to expose this API documentation to public.
 
-We are currently in the heavy process of rollout our first API implementation and documentation. Stay tune!
+The API can be access via:
 
-# Authentication
+`https://api.moovby.com/v1`
 
-> To authorize, use this code:
+`Authorization: Bearer YOUR_API_TOKEN`
 
-```ruby
-require 'kittn'
+# Users
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
+## Register
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+curl
+  -H "Content-Type: application/json"
+  -X POST
+  -d '{"email", "user@moovby.com", "password": "12345678", "device_identifier": "uuid1234", "device_information": "example of user agent", "device_type", "ios|android|web"}'
+  ENDPOINT
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "status": "verified",
+  "message": "You have successfully registered.",
+  "user": {
+    "id": 1,
+    "name": "John Doe",
+    "email": "user@moovby.com",
+    "state": "active"
+  }
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint to sign up new user.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST /signup`
 
-### URL Parameters
+### Query Parameters
 
 Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+--------- | ------- | -----------
+email | User email.
+password | User password. Minimum length is 8 characters.
+device_identifier | UUID from the device user used to register.
+device_information | Device agent info (OS info / hardware info)
+device_type | Device type (Android, iOS, web)
+
+## Login
+
+```shell
+curl
+  -H "Content-Type: application/json"
+  -X POST
+  -d '{"email", "user@moovby.com", "password": "12345678"'
+  ENDPOINT
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 1,
+  "name": "John Doe",
+  "email": "user@moovby.com",
+  "token": "c333345d4b6918c36a3df11782b7bfbf",
+  "state": "active"
+}
+```
+
+This endpoint to sign in existing user.
+
+### HTTP Request
+
+`POST /signin`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------- | -----------
+email | User email.
+password | User password. Minimum length is 8 characters.
+
+## Logout
+
+```shell
+curl
+  -H "Authorization: Bearer <token>"
+  -H "Content-Type: application/json"
+  ENDPOINT
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": "200|401",
+  "message": "You have been signed out"
+}
+```
+
+This endpoint to sign out user.
+
+### HTTP Request
+
+`DELETE /account`
