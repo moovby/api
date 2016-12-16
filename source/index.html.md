@@ -22,15 +22,15 @@ The API can be access via:
 
 `Authorization: Bearer YOUR_API_TOKEN`
 
-# Users
+# Authentication
 
-## Register
+## Register via Email
 
 ```shell
 curl
   -H "Content-Type: application/json"
   -X POST
-  -d '{"email", "user@moovby.com", "password": "12345678", "device_identifier": "uuid1234", "device_information": "example of user agent", "device_type", "ios|android|web"}'
+  -d '{"email", "user@moovby.com", "password": "12345678"}'
   ENDPOINT
 ```
 
@@ -38,18 +38,15 @@ curl
 
 ```json
 {
-  "status": "verified",
+  "status": "true",
   "message": "You have successfully registered.",
-  "user": {
-    "id": 1,
-    "name": "John Doe",
-    "email": "user@moovby.com",
-    "state": "active"
+  "data": {
+    "auth_token": "c333345d4b6918c36a3df11782b7bfbf"
   }
 }
 ```
 
-This endpoint to sign up new user.
+This endpoint to sign up new user via email.
 
 ### HTTP Request
 
@@ -61,11 +58,35 @@ Parameter | Description
 --------- | ------- | -----------
 email | User email.
 password | User password. Minimum length is 8 characters.
-device_identifier | UUID from the device user used to register.
-device_information | Device agent info (OS info / hardware info)
-device_type | Device type (Android, iOS, web)
 
-## Login
+## Register via Social Media
+
+```shell
+curl
+  -H "Content-Type: application/json"
+  -X POST
+  ENDPOINT
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": "true",
+  "message": "You have successfully registered.",
+  "data": {
+    "auth_token": "c333345d4b6918c36a3df11782b7bfbf"
+  }
+}
+```
+
+This endpoint to sign up new user via social media i.e Facebook or Google.
+
+### HTTP Request
+
+`POST /signup/fb_login?token=764b26d5dd8772af73eef8110a33f5d9`
+
+## Login via Email
 
 ```shell
 curl
@@ -79,11 +100,11 @@ curl
 
 ```json
 {
-  "id": 1,
-  "name": "John Doe",
-  "email": "user@moovby.com",
-  "token": "c333345d4b6918c36a3df11782b7bfbf",
-  "state": "active"
+  "status": "true",
+  "message": "You have successfully registered.",
+  "data": {
+    "auth_token": "c333345d4b6918c36a3df11782b7bfbf"
+  }
 }
 ```
 
@@ -123,3 +144,74 @@ This endpoint to sign out user.
 ### HTTP Request
 
 `DELETE /account`
+
+# Profile
+
+## Create user profile
+
+```shell
+curl
+  -H "Authorization: Bearer <token>"
+  -H "Content-Type: application/json"
+  -X POST
+  -d '{"phone_number": "60136285901", "first_name": "Nik Muhammad Amin", "last_name": "Nik Muhammad Kamil", "role": 1, "avatar": "http://moovby.s3.amazonaws.com/avatar.jpg", "ic": "http://moovby.s3.amazonaws.com/ic.jpg", "licence": "http://moovby.s3.amazonaws.com/licence.jpg", "device_info": { "device_identifier": "uuid1234", "device_information": "example of user agent", "device_type": "ios|android|web"}}'
+  ENDPOINT
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": "true",
+  "message": "You have successfully registered.",
+  "user": {}
+}
+```
+
+This endpoint to sign up new user via email.
+
+### HTTP Request
+
+`POST /user`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------- | -----------
+phone_number | User phone number, includes country code.
+first_name | User first name.
+last_name | User last name.
+avatar | User avatar URL.
+role | Indicate user role. 1 (renter), 2 (owner). 3 (both renter and owner).
+ic | User ic picture URL. This is compulsory for both.
+licence | User licence picture URL. This is only for renter but not for owner.
+device_identifier | UUID from the device user used to register.
+device_information | Device agent info (OS info / hardware info)
+device_type | Device type (Android, iOS, web)
+
+
+## Update user profile
+
+# Vehicle
+
+## Get all vehicles
+
+## Get a vehicle
+
+## Filter a vehicles
+
+## List of owner vehicles
+
+# Booking
+
+## Current booking
+
+## Booking history
+
+## Request a vehicle
+
+## Confirm a vehicle
+
+# Promotion
+
+## Validate a promo code
