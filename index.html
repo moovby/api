@@ -131,18 +131,26 @@
 <pre class="highlight shell"><code>curl
   -H <span class="s2">"Content-Type: application/json"</span>
   -X POST
-  -d <span class="s1">'{"email", "user@moovby.com", "password": "12345678"}'</span>
+  -d <span class="s1">'{"email", "nik@moovby.com", "password": "12345678"}'</span>
   ENDPOINT
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You have successfully registered."</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"auth_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c333345d4b6918c36a3df11782b7bfbf"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You have successfully registered."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c333345d4b6918c36a3df11782b7bfbf"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nik.muhammad.amin@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-17 09:54:21"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-17 09:54:22"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"is_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"is_super_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"provider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint to sign up new user via email.</p>
@@ -151,7 +159,7 @@
 
 <p><code class="prettyprint">POST /signup</code></p>
 
-<h3 id="query-parameters">Query Parameters</h3>
+<h3 id="data-parameters">Data Parameters</h3>
 
 <table><thead>
 <tr>
@@ -179,18 +187,41 @@
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You have successfully registered."</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"auth_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c333345d4b6918c36a3df11782b7bfbf"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You have successfully registered."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c333345d4b6918c36a3df11782b7bfbf"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nik.muhammad.amin@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-17 09:54:21"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-17 09:54:22"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"is_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"is_super_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"764b26d5dd8772af73eef8110a33f5d9"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint to sign up new user via social media i.e Facebook or Google.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST /signup/fb_login?token=764b26d5dd8772af73eef8110a33f5d9</code></p>
+<p><code class="prettyprint">POST /signup/fb_login?token=764b26d5dd8772af73eef8110a33f5d9</code>
+<code class="prettyprint">POST /signup/go_login?token=9898493284hjf232j32nj41442421l21</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>Token returned from fb / google.</td>
+</tr>
+</tbody></table>
 
 <h2 id="login-via-email">Login via Email</h2>
 <pre class="highlight shell"><code>curl
@@ -203,11 +234,19 @@
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You have successfully registered."</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"auth_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c333345d4b6918c36a3df11782b7bfbf"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You have successfully registered."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c333345d4b6918c36a3df11782b7bfbf"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nik.muhammad.amin@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-17 09:54:21"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-17 09:54:22"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"is_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"is_super_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint to sign in existing user.</p>
@@ -216,7 +255,7 @@
 
 <p><code class="prettyprint">POST /signin</code></p>
 
-<h3 id="query-parameters">Query Parameters</h3>
+<h3 id="data-parameters">Data Parameters</h3>
 
 <table><thead>
 <tr>
@@ -261,7 +300,7 @@
   -H <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -X POST
-  -d <span class="s1">'{"phone_number": "60136285901", "first_name": "Nik Muhammad Amin", "last_name": "Nik Muhammad Kamil", "role": 1, "avatar": "http://moovby.s3.amazonaws.com/avatar.jpg", "ic": "http://moovby.s3.amazonaws.com/ic.jpg", "licence": "http://moovby.s3.amazonaws.com/licence.jpg", "device_info": { "device_identifier": "uuid1234", "device_information": "example of user agent", "device_type": "ios|android|web"}}'</span>
+  -d <span class="s1">'{"phone_number": "60136285901", "first_name": "Nik Muhammad Amin", "last_name": "Nik Muhammad Kamil", "role": 1, "avatar": "http://moovby.s3.amazonaws.com/avatar.jpg", "ic": "http://moovby.s3.amazonaws.com/ic.jpg", "licence": "http://moovby.s3.amazonaws.com/licence.jpg", "latitude": 3.0748967, "longitude": 101.6438697, "device_info": { "device_identifier": "uuid1234", "device_information": "example of user agent", "device_type": "ios|android|web"}}'</span>
   ENDPOINT
 </code></pre>
 <blockquote>
@@ -273,13 +312,13 @@
   </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint to sign up new user via email.</p>
+<p>This endpoint to create a new user info.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST /user</code></p>
 
-<h3 id="query-parameters">Query Parameters</h3>
+<h3 id="data-parameters">Data Parameters</h3>
 
 <table><thead>
 <tr>
@@ -316,6 +355,14 @@
 <td>User licence picture URL. This is only for renter but not for owner.</td>
 </tr>
 <tr>
+<td>location_latitude</td>
+<td>User last location latitude.</td>
+</tr>
+<tr>
+<td>location_longitude</td>
+<td>User last location longitude.</td>
+</tr>
+<tr>
 <td>device_identifier</td>
 <td>UUID from the device user used to register.</td>
 </tr>
@@ -330,14 +377,357 @@
 </tbody></table>
 
 <h2 id="update-user-profile">Update user profile</h2>
+<pre class="highlight shell"><code>curl
+  -H <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -X POST
+  -d <span class="s1">'{"phone_number": "60136285901", "first_name": "Nik Muhammad Amin", "last_name": "Nik Muhammad Kamil", "role": 1, "avatar": "http://moovby.s3.amazonaws.com/avatar.jpg", "ic": "http://moovby.s3.amazonaws.com/ic.jpg", "licence": "http://moovby.s3.amazonaws.com/licence.jpg", "latitude": 3.0748967, "longitude": 101.6438697, "device_info": { "device_identifier": "uuid1234", "device_information": "example of user agent", "device_type": "ios|android|web"}}'</span>
+  ENDPOINT
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You have successfully registered."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint to update existing user info.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /user/&lt;id&gt;/update</code></p>
+
+<h3 id="data-parameters">Data Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>phone_number</td>
+<td>User phone number, includes country code.</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>User first name.</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>User last name.</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>User avatar URL.</td>
+</tr>
+<tr>
+<td>role</td>
+<td>Indicate user role. 1 (renter), 2 (owner). 3 (both renter and owner).</td>
+</tr>
+<tr>
+<td>ic</td>
+<td>User ic picture URL. This is compulsory for both.</td>
+</tr>
+<tr>
+<td>licence</td>
+<td>User licence picture URL. This is only for renter but not for owner.</td>
+</tr>
+<tr>
+<td>location_latitude</td>
+<td>User last location latitude.</td>
+</tr>
+<tr>
+<td>location_longitude</td>
+<td>User last location longitude.</td>
+</tr>
+<tr>
+<td>device_identifier</td>
+<td>UUID from the device user used to register.</td>
+</tr>
+<tr>
+<td>device_information</td>
+<td>Device agent info (OS info / hardware info)</td>
+</tr>
+<tr>
+<td>device_type</td>
+<td>Device type (Android, iOS, web)</td>
+</tr>
+</tbody></table>
 
 <h1 id="vehicle">Vehicle</h1>
 
 <h2 id="get-all-vehicles">Get all vehicles</h2>
+<pre class="highlight shell"><code>curl
+  -H <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -X GET
+  ENDPOINT
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">509</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehicle_detail_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">145</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_insurance_valid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"transmission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Auto"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"White"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plate_num"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WA 9415 U"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_available"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-13T14:07:56.757+08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-13T14:07:56.757+08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is car description."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"roadtax"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://.../file.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://.../file.jpg"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"insurance_covernote"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://.../file.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://.../file.jpg"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NO. 26/2, JALAN PJS 3/34, TAMAN SRI MANJA 46000, PETALING JAYA"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0748967</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">101.6438697</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"view_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.91736860283402</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"bearing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"251.871341032653"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reviews"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"review_for"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This car is awesome"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-13T14:07:56.757+08:00"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-13T14:07:56.757+08:00"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"booking_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"review_for"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joe is a friendly owner. His car is a badass supercar. Will repeat my booking for sure!"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-13T14:07:56.757+08:00"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-13T14:07:56.757+08:00"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"booking_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehicle_detail_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">145</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_insurance_valid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"transmission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Auto"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"White"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plate_num"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G1M5306"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_available"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-13T14:07:24.780+08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-14T12:32:53.535+08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is car description."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"roadtax"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://.../file.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://.../file.jpg"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"insurance_covernote"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://.../file.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://.../file.jpg"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NO. 26/2, JALAN PJS 3/34, TAMAN SRI MANJA 46000, PETALING JAYA"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0748967</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">101.6438697</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"view_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.91736860283402</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"bearing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"251.871341032653"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reviews"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint to show all available vehicles nearby.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /vehicles?location_latitude=3.0748967&amp;location_longitude=101.6438697&amp;location_address=KLCC&amp;begin_at=2016-12-13T14:07:24.780+08:00&amp;end_at=2016-12-13T14:07:24.780+08:00&amp;duration=32&amp;type_id=1&amp;model_id=33</code></p>
+
+<p><code class="prettyprint">Note: For default request, all params should be null. So it will get all vehicles within 15km radius.</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>location_latitude</td>
+<td>Searching location latitude.</td>
+</tr>
+<tr>
+<td>location_longitude</td>
+<td>Searching location longitude.</td>
+</tr>
+<tr>
+<td>location_address</td>
+<td>Searching location address.</td>
+</tr>
+<tr>
+<td>begin_at</td>
+<td>Vehicle booking begin time.</td>
+</tr>
+<tr>
+<td>end_at</td>
+<td>Vehicle booking end time.</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>Renting duration in hour(s).</td>
+</tr>
+<tr>
+<td>type_id</td>
+<td>Type of vehicle id.</td>
+</tr>
+<tr>
+<td>model_id</td>
+<td>Model of vehicle id.</td>
+</tr>
+</tbody></table>
 
 <h2 id="get-a-vehicle">Get a vehicle</h2>
+<pre class="highlight shell"><code>curl
+  -H <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -X GET
+  ENDPOINT
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">509</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehicle_detail_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">145</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_insurance_valid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"transmission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Auto"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"White"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"plate_num"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WA 9415 U"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_available"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-13T14:07:56.757+08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-13T14:07:56.757+08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is car description."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"roadtax"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://.../file.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://.../file.jpg"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"insurance_covernote"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://.../file.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://.../file.jpg"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NO. 26/2, JALAN PJS 3/34, TAMAN SRI MANJA 46000, PETALING JAYA"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0748967</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">101.6438697</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"view_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.91736860283402</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bearing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"251.871341032653"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reviews"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"review_for"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This car is awesome"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-13T14:07:56.757+08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-13T14:07:56.757+08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"booking_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"review_for"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joe is a friendly owner. His car is a badass supercar. Will repeat my booking for sure!"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-13T14:07:56.757+08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-13T14:07:56.757+08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"booking_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint to show a vehicle.</p>
 
-<h2 id="filter-a-vehicles">Filter a vehicles</h2>
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /vehicle/&lt;id&gt;</code></p>
+
+<h2 id="review-a-vehicle">Review a vehicle</h2>
+<pre class="highlight shell"><code>curl
+  -H <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -X POST
+  -d <span class="s1">'{"review_for": "", "comment": "This car is awesome", "rating": 3, "booking_id": 11}'</span>
+  ENDPOINT
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your review has been successfully created."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint to create a review for a vehicle.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /vehicle/&lt;id&gt;/review</code></p>
+
+<h3 id="data-parameters">Data Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>review_for</td>
+<td>Review for&hellip;</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>Comment that belong to a vehicle.</td>
+</tr>
+<tr>
+<td>rating</td>
+<td>Rating value for a vehicle.</td>
+</tr>
+<tr>
+<td>booking_id</td>
+<td>Booking id.</td>
+</tr>
+</tbody></table>
 
 <h2 id="list-of-owner-vehicles">List of owner vehicles</h2>
 
