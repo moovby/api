@@ -42,8 +42,8 @@ curl
     "message": "You have successfully registered.",
     "token": "c333345d4b6918c36a3df11782b7bfbf",
     "user": {
-        "id": 2,
-        "email": "nik.muhammad.amin@gmail.com",
+        "id": 1,
+        "email": "nik@moovby.com",
         "created_at": "2016-12-17 09:54:21",
         "updated_at": "2016-12-17 09:54:22",
         "is_admin": false,
@@ -84,8 +84,8 @@ curl
     "message": "You have successfully registered.",
     "token": "c333345d4b6918c36a3df11782b7bfbf",
     "user": {
-        "id": 2,
-        "email": "nik.muhammad.amin@gmail.com",
+        "id": 1,
+        "email": "nik@moovby.com",
         "created_at": "2016-12-17 09:54:21",
         "updated_at": "2016-12-17 09:54:22",
         "is_admin": false,
@@ -101,7 +101,6 @@ This endpoint to sign up new user via social media i.e Facebook or Google.
 ### HTTP Request
 
 `POST /signup/fb_login?token=764b26d5dd8772af73eef8110a33f5d9`
-`POST /signup/go_login?token=9898493284hjf232j32nj41442421l21`
 
 ### Query Parameters
 
@@ -115,7 +114,7 @@ token | Token returned from fb / google.
 curl
   -H "Content-Type: application/json"
   -X POST
-  -d '{"email", "user@moovby.com", "password": "12345678"'
+  -d '{"email", "nik@moovby.com", "password": "12345678"'
   ENDPOINT
 ```
 
@@ -127,8 +126,8 @@ curl
     "message": "You have successfully registered.",
     "token": "c333345d4b6918c36a3df11782b7bfbf",
     "user": {
-        "id": 2,
-        "email": "nik.muhammad.amin@gmail.com",
+        "id": 1,
+        "email": "nik@moovby.com",
         "created_at": "2016-12-17 09:54:21",
         "updated_at": "2016-12-17 09:54:22",
         "is_admin": false,
@@ -185,7 +184,7 @@ curl
   -H "Authorization: Bearer <token>"
   -H "Content-Type: application/json"
   -X POST
-  -d '{"phone_number": "60136285901", "first_name": "Nik Muhammad Amin", "last_name": "Nik Muhammad Kamil", "role": 1, "avatar": "http://moovby.s3.amazonaws.com/avatar.jpg", "ic": "http://moovby.s3.amazonaws.com/ic.jpg", "licence": "http://moovby.s3.amazonaws.com/licence.jpg", "latitude": 3.0748967, "longitude": 101.6438697, "device_info": { "device_identifier": "uuid1234", "device_information": "example of user agent", "device_type": "ios|android|web"}}'
+  -d '{"user_id": 1, "phone_number": "60136285901", "first_name": "Nik Muhammad Amin", "last_name": "Nik Muhammad Kamil", "role": 1, "avatar": "http://.../file.jpg", "ic": "http://.../file.jpg", "licence": "http://.../file.jpg", "latitude": 3.0748967, "longitude": 101.6438697, "device_info": { "device_identifier": "uuid1234", "device_information": "example of user agent", "device_type": "ios|android|web"}}'
   ENDPOINT
 ```
 
@@ -200,7 +199,7 @@ curl
         "email": "nik@moovby.com",
         "created_at": "2016-12-21T22:06:22.899+08:00",
         "updated_at": "2016-12-23T10:45:47.953+08:00",
-        "is_admin": true,
+        "is_admin": false,
         "is_super_admin": false,
         "provider": null,
         "uid": null,
@@ -215,21 +214,8 @@ curl
                     "url": "http://.../file.jpg"
                 }
             },
-            "dob": "1991-02-27",
-            "gender": "Male",
-            "age": 25,
-            "occupation": "Engineer",
-            "address": "Jalan Klang Lama Taman Desa Kuala Lumpur Federal Territory of Kuala Lumpur Malaysia",
             "latitude": 3.0748967,
             "longitude": 101.6438697,
-            "income": null,
-            "race": "Malay",
-            "religion": "Muslim",
-            "is_banned": null,
-            "is_married": true,
-            "education": "Degree",
-            "rating": null,
-            "rating_count": null,
             "created_at": "2016-12-21T22:06:22.964+08:00",
             "updated_at": "2016-12-23T10:57:59.810+08:00",
             "phone_number": "60136285901",
@@ -245,15 +231,7 @@ curl
                 "thumb": {
                     "url": "http://.../file.jpg"
                 }
-            },
-            "student_utility": {
-                "url": "http://.../file.jpg",
-                "thumb": {
-                    "url": "http://.../file.jpg"
-                }
-            },
-            "verification_comments": "Need to follow up to ask for better ic picture.",
-            "ic_num": "890820035573"
+            }
         }
     }
 }
@@ -290,7 +268,7 @@ curl
   -H "Authorization: Bearer <token>"
   -H "Content-Type: application/json"
   -X POST
-  -d '{"phone_number": "60136285901", "first_name": "Nik Muhammad Amin", "last_name": "Nik Muhammad Kamil", "role": 1, "avatar": "http://moovby.s3.amazonaws.com/avatar.jpg", "ic": "http://moovby.s3.amazonaws.com/ic.jpg", "licence": "http://moovby.s3.amazonaws.com/licence.jpg", "latitude": 3.0748967, "longitude": 101.6438697, "device_info": { "device_identifier": "uuid1234", "device_information": "example of user agent", "device_type": "ios|android|web"}}'
+  -d '{"email":"nik@moovby.com","profile":{"id":1,"first_name":"Nik Muhammad Amin","last_name":"Nik Muhammad Kamil","avatar":"http://.../file.jpg","dob":"1991-02-27","gender":"Male","age":25,"occupation":"Engineer","address":"Jalan Klang Lama Taman Desa Kuala Lumpur Federal Territory of Kuala Lumpur Malaysia","latitude":3.0748967,"longitude":101.6438697,"race":"Malay","religion":"Muslim","is_married":true,"education":"Degree","phone_number":"60136285901","ic_num":"890820035573"}}'
   ENDPOINT
 ```
 
@@ -351,13 +329,7 @@ curl
                     "url": "http://.../file.jpg"
                 }
             },
-            "student_utility": {
-                "url": "http://.../file.jpg",
-                "thumb": {
-                    "url": "http://.../file.jpg"
-                }
-            },
-            "verification_comments": "Need to follow up to ask for better ic picture.",
+            "verification_comments": null,
             "ic_num": "890820035573"
         }
     }
