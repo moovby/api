@@ -73,6 +73,7 @@ password | User password. Minimum length is 8 characters.
 curl
   -H "Content-Type: application/json"
   -X POST
+  -d '{"device_info": { "device_identifier": "uuid1234", "device_information": "example of user agent", "device_type": "ios|android|web"}}'
   ENDPOINT
 ```
 
@@ -107,6 +108,9 @@ This endpoint to sign up new user via social media i.e Facebook or Google.
 Parameter | Description
 --------- | ------- | -----------
 token | Token returned from fb / google.
+device_identifier | UUID from the device user used to register.
+device_information | Device agent info (OS info / hardware info)
+device_type | Device type (Android, iOS, web)
 
 ## Login via Email
 
@@ -114,7 +118,7 @@ token | Token returned from fb / google.
 curl
   -H "Content-Type: application/json"
   -X POST
-  -d '{"email", "nik@moovby.com", "password": "12345678"'
+  -d '{"email": "nik@moovby.com", "password": "12345678", "device_info": { "device_identifier": "uuid1234", "device_information": "example of user agent", "device_type": "ios|android|web"}}'
   ENDPOINT
 ```
 
@@ -150,6 +154,9 @@ Parameter | Description
 --------- | ------- | -----------
 email | User email.
 password | User password. Minimum length is 8 characters.
+device_identifier | UUID from the device user used to register.
+device_information | Device agent info (OS info / hardware info)
+device_type | Device type (Android, iOS, web)
 
 ## Logout
 
@@ -184,7 +191,7 @@ curl
   -H "Authorization: Bearer <token>"
   -H "Content-Type: application/json"
   -X POST
-  -d '{"user_id": 1, "phone_number": "60136285901", "first_name": "Nik Muhammad Amin", "last_name": "Nik Muhammad Kamil", "role": 1, "avatar": "http://.../file.jpg", "ic": "http://.../file.jpg", "licence": "http://.../file.jpg", "latitude": 3.0748967, "longitude": 101.6438697, "device_info": { "device_identifier": "uuid1234", "device_information": "example of user agent", "device_type": "ios|android|web"}}'
+  -d '{"phone_number": "60136285901", "first_name": "Nik Muhammad Amin", "last_name": "Nik Muhammad Kamil", "role": 1, "avatar": "http://.../file.jpg", "ic": "http://.../file.jpg", "licence": "http://.../file.jpg", "latitude": 3.0748967, "longitude": 101.6438697}'
   ENDPOINT
 ```
 
@@ -256,9 +263,6 @@ ic | User ic picture URL. This is compulsory for both.
 licence | User licence picture URL. This is only for renter but not for owner.
 location_latitude | User last location latitude.
 location_longitude | User last location longitude.
-device_identifier | UUID from the device user used to register.
-device_information | Device agent info (OS info / hardware info)
-device_type | Device type (Android, iOS, web)
 
 
 ## Update user profile
