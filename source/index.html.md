@@ -193,9 +193,69 @@ curl
 
 ```json
 {
-  "status": "true",
-  "message": "You have successfully registered.",
-  "user": {}
+    "status": "true",
+    "message": "You have successfully registered.",
+    "user": {
+        "id": 1,
+        "email": "nik@moovby.com",
+        "created_at": "2016-12-21T22:06:22.899+08:00",
+        "updated_at": "2016-12-23T10:45:47.953+08:00",
+        "is_admin": true,
+        "is_super_admin": false,
+        "provider": null,
+        "uid": null,
+        "profile": {
+            "id": 1,
+            "first_name": "Nik Muhammad Amin",
+            "last_name": "Nik Muhammad Kamil",
+            "role": 1,
+            "avatar": {
+                "url": "http://.../file.jpg",
+                "square": {
+                    "url": "http://.../file.jpg"
+                }
+            },
+            "dob": "1991-02-27",
+            "gender": "Male",
+            "age": 25,
+            "occupation": "Engineer",
+            "address": "Jalan Klang Lama Taman Desa Kuala Lumpur Federal Territory of Kuala Lumpur Malaysia",
+            "latitude": 3.0748967,
+            "longitude": 101.6438697,
+            "income": null,
+            "race": "Malay",
+            "religion": "Muslim",
+            "is_banned": null,
+            "is_married": true,
+            "education": "Degree",
+            "rating": null,
+            "rating_count": null,
+            "created_at": "2016-12-21T22:06:22.964+08:00",
+            "updated_at": "2016-12-23T10:57:59.810+08:00",
+            "phone_number": "60136285901",
+            "renter_verified": false,
+            "ic": {
+                "url": "http://.../file.jpg",
+                "thumb": {
+                    "url": "http://.../file.jpg"
+                }
+            },
+            "driving_license": {
+                "url": "http://.../file.jpghttp://.../file.jpg",
+                "thumb": {
+                    "url": "http://.../file.jpg"
+                }
+            },
+            "student_utility": {
+                "url": "http://.../file.jpg",
+                "thumb": {
+                    "url": "http://.../file.jpg"
+                }
+            },
+            "verification_comments": "Need to follow up to ask for better ic picture.",
+            "ic_num": "890820035573"
+        }
+    }
 }
 ```
 
@@ -238,9 +298,69 @@ curl
 
 ```json
 {
-  "status": "true",
-  "message": "You have successfully registered.",
-  "user": {}
+    "status": "true",
+    "message": "You have successfully updated your profile.",
+    "user": {
+        "id": 1,
+        "email": "nik@moovby.com",
+        "created_at": "2016-12-21T22:06:22.899+08:00",
+        "updated_at": "2016-12-23T10:45:47.953+08:00",
+        "is_admin": true,
+        "is_super_admin": false,
+        "provider": null,
+        "uid": null,
+        "profile": {
+            "id": 1,
+            "first_name": "Nik Muhammad Amin",
+            "last_name": "Nik Muhammad Kamil",
+            "role": 1,
+            "avatar": {
+                "url": "http://.../file.jpg",
+                "square": {
+                    "url": "http://.../file.jpg"
+                }
+            },
+            "dob": "1991-02-27",
+            "gender": "Male",
+            "age": 25,
+            "occupation": "Engineer",
+            "address": "Jalan Klang Lama Taman Desa Kuala Lumpur Federal Territory of Kuala Lumpur Malaysia",
+            "latitude": 3.0748967,
+            "longitude": 101.6438697,
+            "income": null,
+            "race": "Malay",
+            "religion": "Muslim",
+            "is_banned": null,
+            "is_married": true,
+            "education": "Degree",
+            "rating": null,
+            "rating_count": null,
+            "created_at": "2016-12-21T22:06:22.964+08:00",
+            "updated_at": "2016-12-23T10:57:59.810+08:00",
+            "phone_number": "60136285901",
+            "renter_verified": false,
+            "ic": {
+                "url": "http://.../file.jpg",
+                "thumb": {
+                    "url": "http://.../file.jpg"
+                }
+            },
+            "driving_license": {
+                "url": "http://.../file.jpghttp://.../file.jpg",
+                "thumb": {
+                    "url": "http://.../file.jpg"
+                }
+            },
+            "student_utility": {
+                "url": "http://.../file.jpg",
+                "thumb": {
+                    "url": "http://.../file.jpg"
+                }
+            },
+            "verification_comments": "Need to follow up to ask for better ic picture.",
+            "ic_num": "890820035573"
+        }
+    }
 }
 ```
 
@@ -506,6 +626,153 @@ rating | Rating value for a vehicle.
 booking_id | Booking id.
 
 ## List of owner vehicles
+
+```shell
+curl
+  -H "Authorization: Bearer <token>"
+  -H "Content-Type: application/json"
+  -X GET
+  ENDPOINT
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 509,
+    "vehicle_detail_id": 10,
+    "user_id": 145,
+    "is_insurance_valid": null,
+    "year": 2014,
+    "transmission": "Auto",
+    "color": "White",
+    "plate_num": "WA 9415 U",
+    "is_verified": true,
+    "is_available": true,
+    "created_at": "2016-12-13T14:07:56.757+08:00",
+    "updated_at": "2016-12-13T14:07:56.757+08:00",
+    "description": "This is car description.",
+    "roadtax": {
+        "url": "http://.../file.jpg",
+        "thumb": {
+            "url": "http://.../file.jpg"
+        }
+    },
+    "insurance_covernote": {
+        "url": "http://.../file.jpg",
+        "thumb": {
+            "url": "http://.../file.jpg"
+        }
+    },
+    "address": "NO. 26/2, JALAN PJS 3/34, TAMAN SRI MANJA 46000, PETALING JAYA",
+    "latitude": 3.0748967,
+    "longitude": 101.6438697,
+    "view_count": 0,
+    "distance": 2.91736860283402,
+    "bearing": "251.871341032653",
+    "reviews": [
+        {
+            "id": 1,
+            "review_for": "",
+            "comment": "This car is awesome",
+            "created_at": "2016-12-13T14:07:56.757+08:00",
+            "updated_at": "2016-12-13T14:07:56.757+08:00",
+            "rating": 3,
+            "booking_id": 11
+        },
+        {
+            "id": 2,
+            "review_for": "",
+            "comment": "Joe is a friendly owner. His car is a badass supercar. Will repeat my booking for sure!",
+            "created_at": "2016-12-13T14:07:56.757+08:00",
+            "updated_at": "2016-12-13T14:07:56.757+08:00",
+            "rating": 4.5,
+            "booking_id": 13
+        }
+    ]
+}
+```
+
+This endpoint to show a vehicle that belong to user.
+
+### HTTP Request
+
+`GET /user/<id>/vehicles`
+
+## Update vehicle details
+
+```shell
+curl
+  -H "Authorization: Bearer <token>"
+  -H "Content-Type: application/json"
+  -X POST
+  -d '{"vehicle_detail_id":10, "is_insurance_valid":null, "year":2014, "transmission":"Auto", "color":"Green", "plate_num":"WUV 3271", "is_verified":true, "is_available":true, "description":"It is very comfortable to ride in it. I think people will love the ride experience in a this car. Great gas saver especially when you have to do a lot of driving. Wish you enjoy the trip. No smoking or pets please! Safe drive.", "roadtax": {"url":"http://.../file.jpg", "thumb":{"url":"http://.../file.jpg"}}, "insurance_covernote": {"url":"http://.../file.jpg", "thumb":{"url":"http://.../file.jpg"}}, "address":"Taman Sri Manja Petaling Jaya Selangor Malaysia", "latitude":3.075213, "longitude":101.6469241, "view_count":3}'
+  ENDPOINT
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 509,
+    "vehicle_detail_id": 10,
+    "user_id": 145,
+    "is_insurance_valid": null,
+    "year": 2014,
+    "transmission": "Auto",
+    "color": "White",
+    "plate_num": "WA 9415 U",
+    "is_verified": true,
+    "is_available": true,
+    "created_at": "2016-12-13T14:07:56.757+08:00",
+    "updated_at": "2016-12-13T14:07:56.757+08:00",
+    "description": "This is car description.",
+    "roadtax": {
+        "url": "http://.../file.jpg",
+        "thumb": {
+            "url": "http://.../file.jpg"
+        }
+    },
+    "insurance_covernote": {
+        "url": "http://.../file.jpg",
+        "thumb": {
+            "url": "http://.../file.jpg"
+        }
+    },
+    "address": "NO. 26/2, JALAN PJS 3/34, TAMAN SRI MANJA 46000, PETALING JAYA",
+    "latitude": 3.0748967,
+    "longitude": 101.6438697,
+    "view_count": 0,
+    "distance": 2.91736860283402,
+    "bearing": "251.871341032653",
+    "reviews": [
+        {
+            "id": 1,
+            "review_for": "",
+            "comment": "This car is awesome",
+            "created_at": "2016-12-13T14:07:56.757+08:00",
+            "updated_at": "2016-12-13T14:07:56.757+08:00",
+            "rating": 3,
+            "booking_id": 11
+        },
+        {
+            "id": 2,
+            "review_for": "",
+            "comment": "Joe is a friendly owner. His car is a badass supercar. Will repeat my booking for sure!",
+            "created_at": "2016-12-13T14:07:56.757+08:00",
+            "updated_at": "2016-12-13T14:07:56.757+08:00",
+            "rating": 4.5,
+            "booking_id": 13
+        }
+    ]
+}
+```
+
+This endpoint to update vehicle detail
+
+### HTTP Request
+
+`POST /user/<id>/vehicle/<id>`
 
 # Booking
 
