@@ -504,6 +504,25 @@
 
 <p><code class="prettyprint">PUT /user/&lt;id&gt;/update</code></p>
 
+<p>&ldquo;profile&rdquo;: {
+        &ldquo;id&rdquo;: 1,
+        &ldquo;first_name&rdquo;: &ldquo;Nik Muhammad Amin&rdquo;,
+        &ldquo;last_name&rdquo;: &ldquo;Nik Muhammad Kamil&rdquo;,
+        &ldquo;avatar&rdquo;: &ldquo;http://&hellip;/file.jpg&rdquo;,
+        &ldquo;dob&rdquo;: &ldquo;1991-02-27&rdquo;,
+        &ldquo;gender&rdquo;: &ldquo;Male&rdquo;,
+        &ldquo;age&rdquo;: 25,
+        &ldquo;occupation&rdquo;: &ldquo;Engineer&rdquo;,
+        &ldquo;address&rdquo;: &ldquo;Jalan Klang Lama Taman Desa Kuala Lumpur Federal Territory of Kuala Lumpur Malaysia&rdquo;,
+        &ldquo;latitude&rdquo;: 3.0748967,
+        &ldquo;longitude&rdquo;: 101.6438697,
+        &ldquo;race&rdquo;: &ldquo;Malay&rdquo;,
+        &ldquo;religion&rdquo;: &ldquo;Muslim&rdquo;,
+        &ldquo;is_married&rdquo;: true,
+        &ldquo;education&rdquo;: &ldquo;Degree&rdquo;,
+        &ldquo;phone_number&rdquo;: &ldquo;60136285901&rdquo;,
+        &ldquo;ic_num&rdquo;: &ldquo;890820035573&rdquo;</p>
+
 <h3 id="data-parameters">Data Parameters</h3>
 
 <table><thead>
@@ -513,52 +532,72 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>email</td>
+<td>User&rsquo;s email.</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>User&rsquo;s first name.</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>User&rsquo;s last name.</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>User&rsquo;s avatar URL.</td>
+</tr>
+<tr>
+<td>dob</td>
+<td>Date of Birth. i.e 1992-01-29</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>User&rsquo;s gender. i.e Male / Female.</td>
+</tr>
+<tr>
+<td>age</td>
+<td>User&rsquo;s age. Should pass integer.</td>
+</tr>
+<tr>
+<td>occupation</td>
+<td>User&rsquo;s current occupation.</td>
+</tr>
+<tr>
+<td>address</td>
+<td>Home address of user.</td>
+</tr>
+<tr>
+<td>location_latitude</td>
+<td>Latitude that belong to user home address.</td>
+</tr>
+<tr>
+<td>location_longitude</td>
+<td>Longitude that belong to user home address.</td>
+</tr>
+<tr>
+<td>race</td>
+<td>User&rsquo;s race. i.e Malay</td>
+</tr>
+<tr>
+<td>religion</td>
+<td>User&rsquo;s religion. i.e Islam</td>
+</tr>
+<tr>
+<td>is_married</td>
+<td>Indicate user&rsquo;s marriage status. Should pass boolean (true/false).</td>
+</tr>
+<tr>
+<td>education</td>
+<td>Indicate user&rsquo;s education level.</td>
+</tr>
+<tr>
 <td>phone_number</td>
 <td>User phone number, includes country code.</td>
 </tr>
 <tr>
-<td>first_name</td>
-<td>User first name.</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>User last name.</td>
-</tr>
-<tr>
-<td>avatar</td>
-<td>User avatar URL.</td>
-</tr>
-<tr>
-<td>role</td>
-<td>Indicate user role. 1 (renter), 2 (owner). 3 (both renter and owner).</td>
-</tr>
-<tr>
-<td>ic</td>
-<td>User ic picture URL. This is compulsory for both.</td>
-</tr>
-<tr>
-<td>licence</td>
-<td>User licence picture URL. This is only for renter but not for owner.</td>
-</tr>
-<tr>
-<td>location_latitude</td>
-<td>User last location latitude.</td>
-</tr>
-<tr>
-<td>location_longitude</td>
-<td>User last location longitude.</td>
-</tr>
-<tr>
-<td>device_identifier</td>
-<td>UUID from the device user used to register.</td>
-</tr>
-<tr>
-<td>device_information</td>
-<td>Device agent info (OS info / hardware info)</td>
-</tr>
-<tr>
-<td>device_type</td>
-<td>Device type (Android, iOS, web)</td>
+<td>ic_num</td>
+<td>User&rsquo;s ic number.</td>
 </tr>
 </tbody></table>
 
