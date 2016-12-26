@@ -346,22 +346,46 @@ This endpoint to update existing user info.
 
 `PUT /user/<id>/update`
 
+"profile": {
+        "id": 1,
+        "first_name": "Nik Muhammad Amin",
+        "last_name": "Nik Muhammad Kamil",
+        "avatar": "http://.../file.jpg",
+        "dob": "1991-02-27",
+        "gender": "Male",
+        "age": 25,
+        "occupation": "Engineer",
+        "address": "Jalan Klang Lama Taman Desa Kuala Lumpur Federal Territory of Kuala Lumpur Malaysia",
+        "latitude": 3.0748967,
+        "longitude": 101.6438697,
+        "race": "Malay",
+        "religion": "Muslim",
+        "is_married": true,
+        "education": "Degree",
+        "phone_number": "60136285901",
+        "ic_num": "890820035573"
+
 ### Data Parameters
 
 Parameter | Description
 --------- | ------- | -----------
+email | User's email.
+first_name | User's first name.
+last_name | User's last name.
+avatar | User's avatar URL.
+dob | Date of Birth. i.e 1992-01-29
+gender | User's gender. i.e Male / Female.
+age | User's age. Should pass integer.
+occupation | User's current occupation.
+address | Home address of user.
+location_latitude | Latitude that belong to user home address.
+location_longitude | Longitude that belong to user home address.
+race | User's race. i.e Malay
+religion | User's religion. i.e Islam
+is_married | Indicate user's marriage status. Should pass boolean (true/false).
+education | Indicate user's education level.
 phone_number | User phone number, includes country code.
-first_name | User first name.
-last_name | User last name.
-avatar | User avatar URL.
-role | Indicate user role. 1 (renter), 2 (owner). 3 (both renter and owner).
-ic | User ic picture URL. This is compulsory for both.
-licence | User licence picture URL. This is only for renter but not for owner.
-location_latitude | User last location latitude.
-location_longitude | User last location longitude.
-device_identifier | UUID from the device user used to register.
-device_information | Device agent info (OS info / hardware info)
-device_type | Device type (Android, iOS, web)
+ic_num | User's ic number.
 
 # Vehicle
 
