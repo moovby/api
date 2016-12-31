@@ -1017,12 +1017,330 @@
 <h1 id="booking">Booking</h1>
 
 <h2 id="current-booking">Current booking</h2>
+<pre class="highlight shell"><code>curl
+  -H <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -X GET
+  ENDPOINT
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"requested"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"starts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-03T10:30:00.000+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ends"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-06T14:00:00.000+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"process_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"one_to_one"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1120.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-31T10:18:16.278+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-31T10:22:31.555+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c6f2b93c49b15b65"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuala Lumpur International Airport"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.146642</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">101.6958449</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"wk"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"dy"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hr"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"requested"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"starts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-03T10:30:00.000+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ends"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-06T14:00:00.000+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"process_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"one_to_one"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1120.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-31T10:18:16.278+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-31T10:22:31.555+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c6f2b93c49b15b65"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuala Lumpur International Airport"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.146642</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">101.6958449</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"wk"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"dy"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hr"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint to create a new vehicle booking</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /booking?status=current</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Booking status</td>
+</tr>
+</tbody></table>
 
 <h2 id="booking-history">Booking history</h2>
+<pre class="highlight shell"><code>curl
+  -H <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -X GET
+  ENDPOINT
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rejected"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"starts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-03T10:30:00.000+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ends"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-06T14:00:00.000+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"process_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"one_to_one"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1120.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-31T10:18:16.278+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-31T10:22:31.555+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c6f2b93c49b15b65"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuala Lumpur International Airport"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.146642</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">101.6958449</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"wk"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"dy"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hr"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancelled"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"starts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-03T10:30:00.000+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ends"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-06T14:00:00.000+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"process_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"one_to_one"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1120.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-31T10:18:16.278+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-31T10:22:31.555+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c6f2b93c49b15b65"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuala Lumpur International Airport"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.146642</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">101.6958449</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"wk"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"dy"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hr"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"closed"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"starts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-03T10:30:00.000+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ends"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-06T14:00:00.000+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"process_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"one_to_one"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1120.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-31T10:18:16.278+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-31T10:22:31.555+08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c6f2b93c49b15b65"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuala Lumpur International Airport"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.146642</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">101.6958449</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"wk"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"dy"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hr"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint to show booking history</p>
 
-<h2 id="request-a-vehicle">Request a vehicle</h2>
+<h3 id="http-request">HTTP Request</h3>
 
-<h2 id="confirm-a-vehicle">Confirm a vehicle</h2>
+<p><code class="prettyprint">GET /booking?status=history</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Booking status</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-new-vehicle-booking-renter">Create new vehicle booking (renter)</h2>
+<pre class="highlight shell"><code>curl
+  -H <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -X POST
+  -d <span class="s1">'{"starts":"2017-01-03T10:30:00.000+08:00","ends":"2017-01-06T14:00:00.000+08:00","address":"Kuala Lumpur International Airport","latitude":3.146642,"longitude":101.6958449}'</span>
+  ENDPOINT
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"requested"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"starts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-03T10:30:00.000+08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ends"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-06T14:00:00.000+08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"process_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"one_to_one"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1120.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-31T10:18:16.278+08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-31T10:22:31.555+08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c6f2b93c49b15b65"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuala Lumpur International Airport"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.146642</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">101.6958449</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"wk"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dy"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hr"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint to create a new vehicle booking</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /booking/new</code></p>
+
+<h3 id="data-parameters">Data Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>starts</td>
+<td>Start booking date and time.</td>
+</tr>
+<tr>
+<td>ends</td>
+<td>End booking date and time.</td>
+</tr>
+<tr>
+<td>address</td>
+<td>Pickup address for the vehicle.</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Pickup coordinate - latitude.</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Pickup coordinate - longitude.</td>
+</tr>
+</tbody></table>
+
+<h2 id="cancel-a-vehicle-booking-renter">Cancel a vehicle booking (renter)</h2>
+<pre class="highlight shell"><code>curl
+  -H <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -X PUT
+  ENDPOINT
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancelled"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"starts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-03T10:30:00.000+08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ends"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-06T14:00:00.000+08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"process_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"one_to_one"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1120.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-31T10:18:16.278+08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-31T10:22:31.555+08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c6f2b93c49b15b65"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuala Lumpur International Airport"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.146642</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">101.6958449</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"wk"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dy"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hr"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint to cancel vehicle booking</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /booking/&lt;id&gt;/cancel</code></p>
+
+<h2 id="confirm-a-vehicle-booking-owner">Confirm a vehicle booking (owner)</h2>
+<pre class="highlight shell"><code>curl
+  -H <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -X PUT
+  ENDPOINT
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"confirmed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"starts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-03T10:30:00.000+08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ends"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-06T14:00:00.000+08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"process_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"one_to_one"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1120.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-31T10:18:16.278+08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-31T10:22:31.555+08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c6f2b93c49b15b65"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuala Lumpur International Airport"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.146642</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">101.6958449</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"wk"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dy"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hr"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint to confirmed vehicle booking</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /booking/&lt;id&gt;/confirm</code></p>
+
+<h2 id="reject-a-vehicle-booking-owner">Reject a vehicle booking (owner)</h2>
 
 <h1 id="promotion">Promotion</h1>
 
