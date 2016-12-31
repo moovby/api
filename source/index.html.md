@@ -778,11 +778,308 @@ This endpoint to update vehicle detail
 
 ## Current booking
 
+```shell
+curl
+  -H "Authorization: Bearer <token>"
+  -H "Content-Type: application/json"
+  -X GET
+  ENDPOINT
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+      "id": 3,
+      "user_id": 9,
+      "vehicle_id": 15,
+      "status": "requested",
+      "starts": "2017-01-03T10:30:00.000+08:00",
+      "ends": "2017-01-06T14:00:00.000+08:00",
+      "process_type": "one_to_one",
+      "paid": false,
+      "total": "1120.0",
+      "created_at": "2016-12-31T10:18:16.278+08:00",
+      "updated_at": "2016-12-31T10:22:31.555+08:00",
+      "comments": null,
+      "token": "c6f2b93c49b15b65",
+      "address": "Kuala Lumpur International Airport",
+      "latitude": 3.146642,
+      "longitude": 101.6958449,
+      "wk": 0,
+      "dy": 3,
+      "hr": 3,
+      "mn": "0.5"
+  },
+  {
+      "id": 3,
+      "user_id": 9,
+      "vehicle_id": 15,
+      "status": "requested",
+      "starts": "2017-01-03T10:30:00.000+08:00",
+      "ends": "2017-01-06T14:00:00.000+08:00",
+      "process_type": "one_to_one",
+      "paid": false,
+      "total": "1120.0",
+      "created_at": "2016-12-31T10:18:16.278+08:00",
+      "updated_at": "2016-12-31T10:22:31.555+08:00",
+      "comments": null,
+      "token": "c6f2b93c49b15b65",
+      "address": "Kuala Lumpur International Airport",
+      "latitude": 3.146642,
+      "longitude": 101.6958449,
+      "wk": 0,
+      "dy": 3,
+      "hr": 3,
+      "mn": "0.5"
+  }
+]
+```
+This endpoint to create a new vehicle booking
+
+### HTTP Request
+
+`GET /booking?status=current`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------- | -----------
+status | Booking status
+
 ## Booking history
 
-## Request a vehicle
+```shell
+curl
+  -H "Authorization: Bearer <token>"
+  -H "Content-Type: application/json"
+  -X GET
+  ENDPOINT
+```
 
-## Confirm a vehicle
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+      "id": 3,
+      "user_id": 9,
+      "vehicle_id": 15,
+      "status": "rejected",
+      "starts": "2017-01-03T10:30:00.000+08:00",
+      "ends": "2017-01-06T14:00:00.000+08:00",
+      "process_type": "one_to_one",
+      "paid": false,
+      "total": "1120.0",
+      "created_at": "2016-12-31T10:18:16.278+08:00",
+      "updated_at": "2016-12-31T10:22:31.555+08:00",
+      "comments": null,
+      "token": "c6f2b93c49b15b65",
+      "address": "Kuala Lumpur International Airport",
+      "latitude": 3.146642,
+      "longitude": 101.6958449,
+      "wk": 0,
+      "dy": 3,
+      "hr": 3,
+      "mn": "0.5"
+  },
+  {
+      "id": 3,
+      "user_id": 9,
+      "vehicle_id": 15,
+      "status": "cancelled",
+      "starts": "2017-01-03T10:30:00.000+08:00",
+      "ends": "2017-01-06T14:00:00.000+08:00",
+      "process_type": "one_to_one",
+      "paid": false,
+      "total": "1120.0",
+      "created_at": "2016-12-31T10:18:16.278+08:00",
+      "updated_at": "2016-12-31T10:22:31.555+08:00",
+      "comments": null,
+      "token": "c6f2b93c49b15b65",
+      "address": "Kuala Lumpur International Airport",
+      "latitude": 3.146642,
+      "longitude": 101.6958449,
+      "wk": 0,
+      "dy": 3,
+      "hr": 3,
+      "mn": "0.5"
+  },
+  {
+      "id": 3,
+      "user_id": 9,
+      "vehicle_id": 15,
+      "status": "closed",
+      "starts": "2017-01-03T10:30:00.000+08:00",
+      "ends": "2017-01-06T14:00:00.000+08:00",
+      "process_type": "one_to_one",
+      "paid": false,
+      "total": "1120.0",
+      "created_at": "2016-12-31T10:18:16.278+08:00",
+      "updated_at": "2016-12-31T10:22:31.555+08:00",
+      "comments": null,
+      "token": "c6f2b93c49b15b65",
+      "address": "Kuala Lumpur International Airport",
+      "latitude": 3.146642,
+      "longitude": 101.6958449,
+      "wk": 0,
+      "dy": 3,
+      "hr": 3,
+      "mn": "0.5"
+  }
+]
+```
+This endpoint to show booking history
+
+### HTTP Request
+
+`GET /booking?status=history`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------- | -----------
+status | Booking status
+
+## Create new vehicle booking (renter)
+
+```shell
+curl
+  -H "Authorization: Bearer <token>"
+  -H "Content-Type: application/json"
+  -X POST
+  -d '{"starts":"2017-01-03T10:30:00.000+08:00","ends":"2017-01-06T14:00:00.000+08:00","address":"Kuala Lumpur International Airport","latitude":3.146642,"longitude":101.6958449}'
+  ENDPOINT
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 3,
+    "user_id": 9,
+    "vehicle_id": 15,
+    "status": "requested",
+    "starts": "2017-01-03T10:30:00.000+08:00",
+    "ends": "2017-01-06T14:00:00.000+08:00",
+    "process_type": "one_to_one",
+    "paid": false,
+    "total": "1120.0",
+    "created_at": "2016-12-31T10:18:16.278+08:00",
+    "updated_at": "2016-12-31T10:22:31.555+08:00",
+    "comments": null,
+    "token": "c6f2b93c49b15b65",
+    "address": "Kuala Lumpur International Airport",
+    "latitude": 3.146642,
+    "longitude": 101.6958449,
+    "wk": 0,
+    "dy": 3,
+    "hr": 3,
+    "mn": "0.5"
+}
+```
+This endpoint to create a new vehicle booking
+
+### HTTP Request
+
+`POST /booking/new`
+
+### Data Parameters
+
+Parameter | Description
+--------- | ------- | -----------
+starts | Start booking date and time.
+ends | End booking date and time.
+address | Pickup address for the vehicle.
+latitude | Pickup coordinate - latitude.
+longitude | Pickup coordinate - longitude.
+
+## Cancel a vehicle booking (renter)
+
+```shell
+curl
+  -H "Authorization: Bearer <token>"
+  -H "Content-Type: application/json"
+  -X PUT
+  ENDPOINT
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 3,
+    "user_id": 9,
+    "vehicle_id": 15,
+    "status": "cancelled",
+    "starts": "2017-01-03T10:30:00.000+08:00",
+    "ends": "2017-01-06T14:00:00.000+08:00",
+    "process_type": "one_to_one",
+    "paid": false,
+    "total": "1120.0",
+    "created_at": "2016-12-31T10:18:16.278+08:00",
+    "updated_at": "2016-12-31T10:22:31.555+08:00",
+    "comments": null,
+    "token": "c6f2b93c49b15b65",
+    "address": "Kuala Lumpur International Airport",
+    "latitude": 3.146642,
+    "longitude": 101.6958449,
+    "wk": 0,
+    "dy": 3,
+    "hr": 3,
+    "mn": "0.5"
+}
+```
+This endpoint to cancel vehicle booking
+
+### HTTP Request
+
+`PUT /booking/<id>/cancel`
+
+## Confirm a vehicle booking (owner)
+
+```shell
+curl
+  -H "Authorization: Bearer <token>"
+  -H "Content-Type: application/json"
+  -X PUT
+  ENDPOINT
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 3,
+    "user_id": 9,
+    "vehicle_id": 15,
+    "status": "confirmed",
+    "starts": "2017-01-03T10:30:00.000+08:00",
+    "ends": "2017-01-06T14:00:00.000+08:00",
+    "process_type": "one_to_one",
+    "paid": false,
+    "total": "1120.0",
+    "created_at": "2016-12-31T10:18:16.278+08:00",
+    "updated_at": "2016-12-31T10:22:31.555+08:00",
+    "comments": null,
+    "token": "c6f2b93c49b15b65",
+    "address": "Kuala Lumpur International Airport",
+    "latitude": 3.146642,
+    "longitude": 101.6958449,
+    "wk": 0,
+    "dy": 3,
+    "hr": 3,
+    "mn": "0.5"
+}
+```
+This endpoint to confirmed vehicle booking
+
+### HTTP Request
+
+`PUT /booking/<id>/confirm`
+
+## Reject a vehicle booking (owner)
 
 # Promotion
 
