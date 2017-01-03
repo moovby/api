@@ -699,6 +699,81 @@ This endpoint to show a vehicle that belong to user.
 
 `GET /user/<id>/vehicles`
 
+## Create new vehicle
+
+```shell
+curl
+  -H "Authorization: Bearer <token>"
+  -H "Content-Type: application/json"
+  -X POST
+  -d '{"vehicle_detail_id":10,"year":2014,"transmission":"Auto","color":"Green","plate_num":"WUV 3271","is_available":true,"description":"It is very comfortable to ride in it. I think people will love the ride experience in a this car. Great gas saver especially when you have to do a lot of driving. Wish you enjoy the trip. No smoking or pets please! Safe drive.","roadtax":"base64String","insurance_covernote":"base64String","address":"Taman Sri Manja Petaling Jaya Selangor Malaysia","latitude":3.075213,"longitude":101.6469241}'
+  ENDPOINT
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 509,
+    "vehicle_detail_id": 10,
+    "user_id": 145,
+    "is_insurance_valid": null,
+    "year": 2014,
+    "transmission": "Auto",
+    "color": "White",
+    "plate_num": "WA 9415 U",
+    "is_verified": true,
+    "is_available": true,
+    "created_at": "2016-12-13T14:07:56.757+08:00",
+    "updated_at": "2016-12-13T14:07:56.757+08:00",
+    "description": "This is car description.",
+    "roadtax": {
+        "url": "http://.../file.jpg",
+        "thumb": {
+            "url": "http://.../file.jpg"
+        }
+    },
+    "insurance_covernote": {
+        "url": "http://.../file.jpg",
+        "thumb": {
+            "url": "http://.../file.jpg"
+        }
+    },
+    "address": "NO. 26/2, JALAN PJS 3/34, TAMAN SRI MANJA 46000, PETALING JAYA",
+    "latitude": 3.0748967,
+    "longitude": 101.6438697,
+    "view_count": 0,
+    "distance": 2.91736860283402,
+    "bearing": "251.871341032653",
+    "reviews": [
+        {
+            "id": 1,
+            "review_for": "",
+            "comment": "This car is awesome",
+            "created_at": "2016-12-13T14:07:56.757+08:00",
+            "updated_at": "2016-12-13T14:07:56.757+08:00",
+            "rating": 3,
+            "booking_id": 11
+        },
+        {
+            "id": 2,
+            "review_for": "",
+            "comment": "Joe is a friendly owner. His car is a badass supercar. Will repeat my booking for sure!",
+            "created_at": "2016-12-13T14:07:56.757+08:00",
+            "updated_at": "2016-12-13T14:07:56.757+08:00",
+            "rating": 4.5,
+            "booking_id": 13
+        }
+    ]
+}
+```
+
+This endpoint to create new vehicle
+
+### HTTP Request
+
+`POST /user/<id>/vehicle/new`
+
 ## Update vehicle details
 
 ```shell
