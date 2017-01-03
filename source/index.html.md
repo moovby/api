@@ -781,7 +781,7 @@ curl
   -H "Authorization: Bearer <token>"
   -H "Content-Type: application/json"
   -X POST
-  -d '{"vehicle_detail_id":10, "is_insurance_valid":null, "year":2014, "transmission":"Auto", "color":"Green", "plate_num":"WUV 3271", "is_verified":true, "is_available":true, "description":"It is very comfortable to ride in it. I think people will love the ride experience in a this car. Great gas saver especially when you have to do a lot of driving. Wish you enjoy the trip. No smoking or pets please! Safe drive.", "roadtax": {"url":"http://.../file.jpg", "thumb":{"url":"http://.../file.jpg"}}, "insurance_covernote": {"url":"http://.../file.jpg", "thumb":{"url":"http://.../file.jpg"}}, "address":"Taman Sri Manja Petaling Jaya Selangor Malaysia", "latitude":3.075213, "longitude":101.6469241, "view_count":3}'
+  -d '{"vehicle_detail_id":10,"year":2014,"transmission":"Auto","color":"Green","plate_num":"WUV 3271","is_available":true,"description":"It is very comfortable to ride in it. I think people will love the ride experience in a this car. Great gas saver especially when you have to do a lot of driving. Wish you enjoy the trip. No smoking or pets please! Safe drive.","roadtax":"base64String","insurance_covernote":"base64String","address":"Taman Sri Manja Petaling Jaya Selangor Malaysia","latitude":3.075213,"longitude":101.6469241}'
   ENDPOINT
 ```
 
