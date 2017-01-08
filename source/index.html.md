@@ -38,19 +38,19 @@ curl
 
 ```json
 {
-    "status": "true",
-    "message": "You have successfully registered.",
-    "token": "c333345d4b6918c36a3df11782b7bfbf",
-    "user": {
-        "id": 1,
-        "email": "nik@moovby.com",
-        "created_at": "2016-12-17 09:54:21",
-        "updated_at": "2016-12-17 09:54:22",
-        "is_admin": false,
-        "is_super_admin": false,
-        "provider": null,
-        "uid": null
-    }
+  "status": true,
+  "message": "You have successfully registered.",
+  "auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9",
+  "user": {
+    "id": 17,
+    "email": "nik@moovby.com",
+    "created_at": "2017-01-08T11:19:42.776+08:00",
+    "updated_at": "2017-01-08T11:19:42.790+08:00",
+    "is_admin": false,
+    "is_super_admin": false,
+    "fb_uid": null,
+    "google_uid": null
+  }
 }
 ```
 
@@ -73,7 +73,7 @@ password | User password. Minimum length is 8 characters.
 curl
   -H "Content-Type: application/json"
   -X POST
-  -d '{"device_info": { "device_identifier": "uuid1234", "device_information": "example of user agent", "device_type": "ios|android|web"}}'
+  -d '{"email":"nik@moovby.com","uid":"jkj287289289ijkn1kj1j7eheje73783","device_info":{"device_identifier":"uuid1234","device_information":"example of user agent","device_type":"ios"}}'
   ENDPOINT
 ```
 
@@ -81,19 +81,19 @@ curl
 
 ```json
 {
-    "status": "true",
-    "message": "You have successfully registered.",
-    "token": "c333345d4b6918c36a3df11782b7bfbf",
-    "user": {
-        "id": 1,
-        "email": "nik@moovby.com",
-        "created_at": "2016-12-17 09:54:21",
-        "updated_at": "2016-12-17 09:54:22",
-        "is_admin": false,
-        "is_super_admin": false,
-        "provider": "facebook",
-        "uid": "764b26d5dd8772af73eef8110a33f5d9"
-    }
+  "status": true,
+  "message": "Login via facebook successfully",
+  "user": {
+    "id": 18,
+    "email": "nik@moovby.com",
+    "created_at": "2017-01-08T11:21:20.656+08:00",
+    "updated_at": "2017-01-08T11:23:26.415+08:00",
+    "is_admin": false,
+    "is_super_admin": false,
+    "fb_uid": "jkj287289289ijkn1kj1j7eheje73783",
+    "google_uid": null
+  },
+  "auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im5pa0Btb292YnkuY29tIiwiZW5jcnlwdGVkX3Bhc3N3b3JkIjoiJDJhJDEwJHhMUzhmTE1xQjFvZnNFa1V0akxYTWVxQ28xTUpOeDVvc0RWOEpuTURwT0YxMElQaUQvUklXIiwiYXV0aF90b2tlbiI6InRRZ1BIdWVwV3oySmJKem9mMjNQIn0.02bgpw-ZCgBkoIrzz8ONmJRsqw07T3JTKGFrdd60Vu8"
 }
 ```
 
@@ -101,7 +101,7 @@ This endpoint to sign up new user via social media i.e Facebook or Google.
 
 ### HTTP Request
 
-`POST /signup/fb_login?token=764b26d5dd8772af73eef8110a33f5d9`
+`POST /signin/facebook`
 
 ### Query Parameters
 
@@ -126,19 +126,19 @@ curl
 
 ```json
 {
-    "status": "true",
-    "message": "You have successfully registered.",
-    "token": "c333345d4b6918c36a3df11782b7bfbf",
-    "user": {
-        "id": 1,
-        "email": "nik@moovby.com",
-        "created_at": "2016-12-17 09:54:21",
-        "updated_at": "2016-12-17 09:54:22",
-        "is_admin": false,
-        "is_super_admin": false,
-        "provider": "",
-        "uid": ""
-    }
+  "status": true,
+  "message": "Login successfully",
+  "auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im5pa0Btb292YnkuY29tIiwiZW5jcnlwdGVkX3Bhc3N3b3JkIjoiJDJhJDEwJHhMUzhmTE1xQjFvZnNFa1V0akxYTWVxQ28xTUpOeDVvc0RWOEpuTURwT0YxMElQaUQvUklXIiwiYXV0aF90b2tlbiI6InRRZ1BIdWVwV3oySmJKem9mMjNQIn0.02bgpw-ZCgBkoIrzz8ONmJRsqw07T3JTKGFrdd60Vu8",
+  "user": {
+    "id": 18,
+    "email": "nik@moovby.com",
+    "created_at": "2017-01-08T11:21:20.656+08:00",
+    "updated_at": "2017-01-08T11:23:26.415+08:00",
+    "is_admin": false,
+    "is_super_admin": false,
+    "fb_uid": "jkj287289289ijkn1kj1j7eheje73783",
+    "google_uid": null
+  }
 }
 ```
 
@@ -164,6 +164,8 @@ device_type | Device type (Android, iOS, web)
 curl
   -H "Authorization: Bearer <token>"
   -H "Content-Type: application/json"
+  -X DELETE
+  -d '{"device_info":{"device_identifier":"uuid1234","device_information":"example of user agent","device_type":"ios"}}'
   ENDPOINT
 ```
 
@@ -171,8 +173,8 @@ curl
 
 ```json
 {
-  "status": "200|401",
-  "message": "You have been signed out"
+  "status": true,
+  "message": "Logout successfully"
 }
 ```
 
@@ -191,7 +193,7 @@ curl
   -H "Authorization: Bearer <token>"
   -H "Content-Type: application/json"
   -X POST
-  -d '{"phone_number": "60136285901", "first_name": "Nik Muhammad Amin", "last_name": "Nik Muhammad Kamil", "role": 1, "avatar": "http://.../file.jpg", "ic": "http://.../file.jpg", "licence": "http://.../file.jpg", "latitude": 3.0748967, "longitude": 101.6438697}'
+  -d '{"phone":"60136285901","first_name":"Nik Muhammad Amin","last_name":"Nik Muhammad Kamil","role":1,"ic":"base64string","avatar":"base64string","driving_license":"base64string","location_latitude":3.0748967,"location_longitude":101.6438697}'
   ENDPOINT
 ```
 
@@ -199,48 +201,48 @@ curl
 
 ```json
 {
-    "status": "true",
-    "message": "You have successfully registered.",
-    "user": {
-        "id": 1,
-        "email": "nik@moovby.com",
-        "created_at": "2016-12-21T22:06:22.899+08:00",
-        "updated_at": "2016-12-23T10:45:47.953+08:00",
-        "is_admin": false,
-        "is_super_admin": false,
-        "provider": null,
-        "uid": null,
-        "profile": {
-            "id": 1,
-            "first_name": "Nik Muhammad Amin",
-            "last_name": "Nik Muhammad Kamil",
-            "role": 1,
-            "avatar": {
-                "url": "http://.../file.jpg",
-                "square": {
-                    "url": "http://.../file.jpg"
-                }
-            },
-            "latitude": 3.0748967,
-            "longitude": 101.6438697,
-            "created_at": "2016-12-21T22:06:22.964+08:00",
-            "updated_at": "2016-12-23T10:57:59.810+08:00",
-            "phone_number": "60136285901",
-            "renter_verified": false,
-            "ic": {
-                "url": "http://.../file.jpg",
-                "thumb": {
-                    "url": "http://.../file.jpg"
-                }
-            },
-            "driving_license": {
-                "url": "http://.../file.jpghttp://.../file.jpg",
-                "thumb": {
-                    "url": "http://.../file.jpg"
-                }
-            }
-        }
+  "status": true,
+  "message": "user profile have successfully created",
+  "user": {
+    "id": 15,
+    "email": "user@moovby.com",
+    "created_at": "2017-01-04T10:56:23.862+08:00",
+    "updated_at": "2017-01-08T11:28:31.838+08:00",
+    "is_admin": false,
+    "is_super_admin": false,
+    "fb_uid": null,
+    "google_uid": null,
+    "profile": {
+      "id": 73,
+      "first_name": "Nik Muhammad Amin",
+      "last_name": "Nik Muhammad Kamil",
+      "role": 1,
+      "location_latitude": 3.0748967,
+      "location_longitude": 101.6438697,
+      "created_at": "2017-01-08T11:28:31.836+08:00",
+      "updated_at": "2017-01-08T11:28:31.836+08:00",
+      "phone": "60136285901",
+      "renter_verified": false,
+      "avatar": {
+          "url": "http://.../file.jpg",
+          "square": {
+              "url": "http://.../file.jpg"
+          }
+      },
+      "ic": {
+          "url": "http://.../file.jpg",
+          "thumb": {
+              "url": "http://.../file.jpg"
+          }
+      },
+      "driving_license": {
+          "url": "http://.../file.jpg",
+          "thumb": {
+              "url": "http://.../file.jpg"
+          }
+      }
     }
+  }
 }
 ```
 
@@ -248,7 +250,7 @@ This endpoint to create a new user info.
 
 ### HTTP Request
 
-`POST /user`
+`POST /profiles`
 
 ### Data Parameters
 
@@ -344,7 +346,7 @@ This endpoint to update existing user info.
 
 ### HTTP Request
 
-`PUT /user/<id>/update`
+`PATCH /profiles/<id>`
 
 "profile": {
         "id": 1,
@@ -403,21 +405,23 @@ curl
 
 ```json
 {
-    "vehicle": [
+    "status": true,
+    "message": "Vehicles successfully retrived",
+    "vehicles": [
         {
-            "id": 509,
+            "id": 26,
             "vehicle_detail_id": 10,
-            "user_id": 145,
+            "user_id": 15,
             "is_insurance_valid": null,
             "year": 2014,
             "transmission": "Auto",
-            "color": "White",
-            "plate_num": "WA 9415 U",
-            "is_verified": true,
+            "color": "Green",
+            "plate_num": "WUV 3271",
+            "is_verified": false,
             "is_available": true,
-            "created_at": "2016-12-13T14:07:56.757+08:00",
-            "updated_at": "2016-12-13T14:07:56.757+08:00",
-            "description": "This is car description.",
+            "created_at": "2017-01-05T11:53:24.726+08:00",
+            "updated_at": "2017-01-05T11:53:24.726+08:00",
+            "description": "It is very comfortable to ride in it. I think people will love the ride experience in a this car. Great gas saver especially when you have to do a lot of driving. Wish you enjoy the trip. No smoking or pets please! Safe drive.",
             "roadtax": {
                 "url": "http://.../file.jpg",
                 "thumb": {
@@ -430,12 +434,12 @@ curl
                     "url": "http://.../file.jpg"
                 }
             },
-            "address": "NO. 26/2, JALAN PJS 3/34, TAMAN SRI MANJA 46000, PETALING JAYA",
-            "latitude": 3.0748967,
-            "longitude": 101.6438697,
+            "address": "Taman Sri Manja Petaling Jaya Selangor Malaysia",
+            "latitude": 3.075213,
+            "longitude": 101.6469241,
             "view_count": 0,
-            "distance": 2.91736860283402,
-            "bearing": "251.871341032653",
+            "distance": 0.340963574298223,
+            "bearing": "84.087778992336",
             "reviews": [
                 {
                     "id": 1,
@@ -458,19 +462,19 @@ curl
             ]
         },
         {
-            "id": 110,
-            "vehicle_detail_id": 28,
-            "user_id": 145,
+            "id": 27,
+            "vehicle_detail_id": 10,
+            "user_id": 15,
             "is_insurance_valid": null,
             "year": 2014,
             "transmission": "Auto",
-            "color": "White",
-            "plate_num": "G1M5306",
-            "is_verified": true,
+            "color": "Green",
+            "plate_num": "WUV 3271",
+            "is_verified": false,
             "is_available": true,
-            "created_at": "2016-12-13T14:07:24.780+08:00",
-            "updated_at": "2016-12-14T12:32:53.535+08:00",
-            "description": "This is car description.",
+            "created_at": "2017-01-05T11:55:49.467+08:00",
+            "updated_at": "2017-01-05T11:55:49.467+08:00",
+            "description": "It is very comfortable to ride in it. I think people will love the ride experience in a this car. Great gas saver especially when you have to do a lot of driving. Wish you enjoy the trip. No smoking or pets please! Safe drive.",
             "roadtax": {
                 "url": "http://.../file.jpg",
                 "thumb": {
@@ -483,12 +487,12 @@ curl
                     "url": "http://.../file.jpg"
                 }
             },
-            "address": "NO. 26/2, JALAN PJS 3/34, TAMAN SRI MANJA 46000, PETALING JAYA",
-            "latitude": 3.0748967,
-            "longitude": 101.6438697,
-            "view_count": 6,
-            "distance": 2.91736860283402,
-            "bearing": "251.871341032653",
+            "address": "Taman Sri Manja Petaling Jaya Selangor Malaysia",
+            "latitude": 3.075213,
+            "longitude": 101.6469241,
+            "view_count": 0,
+            "distance": 0.340963574298223,
+            "bearing": "84.087778992336",
             "reviews": []
         }
     ]
@@ -499,7 +503,7 @@ This endpoint to show all available vehicles nearby.
 
 ### HTTP Request
 
-`GET /vehicles?location_latitude=3.0748967&location_longitude=101.6438697&location_address=KLCC&begin_at=2016-12-13T14:07:24.780+08:00&end_at=2016-12-13T14:07:24.780+08:00&duration=32&type_id=1&model_id=33`
+`GET /vehicles?location_latitude=3.0748967&location_longitude=101.6438697&location_address=KLCC&begin_at=22016-12-01 12:00:00&end_at=2016-12-10 15:30:00&duration=32&type=sedan&model=ford`
 
 `Note: For default request, all params should be null. So it will get all vehicles within 15km radius.`
 
@@ -513,8 +517,8 @@ location_address | Searching location address.
 begin_at | Vehicle booking begin time.
 end_at | Vehicle booking end time.
 duration | Renting duration in hour(s).
-type_id | Type of vehicle id.
-model_id | Model of vehicle id.
+type | Type of vehicle.
+model  | Model of vehicle.
 
 ## Get a vehicle
 
@@ -530,19 +534,22 @@ curl
 
 ```json
 {
-    "id": 509,
-    "vehicle_detail_id": 10,
-    "user_id": 145,
+  "status": true,
+  "message": "Vehicle found",
+  "vehicle": {
+    "id": 11,
+    "vehicle_detail_id": 8,
+    "user_id": 1,
     "is_insurance_valid": null,
-    "year": 2014,
+    "year": 2015,
     "transmission": "Auto",
     "color": "White",
-    "plate_num": "WA 9415 U",
+    "plate_num": "BNL 754",
     "is_verified": true,
     "is_available": true,
-    "created_at": "2016-12-13T14:07:56.757+08:00",
-    "updated_at": "2016-12-13T14:07:56.757+08:00",
-    "description": "This is car description.",
+    "created_at": "2016-12-21T22:19:49.963+08:00",
+    "updated_at": "2016-12-21T22:19:49.963+08:00",
+    "description": "It is very comfortable to ride in it. I think people will love the ride experience in a this car. Great gas saver especially when you have to do a lot of driving. Wish you enjoy the trip. No smoking or pets please! Safe drive.",
     "roadtax": {
         "url": "http://.../file.jpg",
         "thumb": {
@@ -555,12 +562,12 @@ curl
             "url": "http://.../file.jpg"
         }
     },
-    "address": "NO. 26/2, JALAN PJS 3/34, TAMAN SRI MANJA 46000, PETALING JAYA",
-    "latitude": 3.0748967,
-    "longitude": 101.6438697,
+    "address": "17A JALAN CEMPAKA 15,TAMAN CEMPAKA,68000 AMPANG SELANGOR",
+    "latitude": 3.1379487,
+    "longitude": 101.7496673,
     "view_count": 0,
-    "distance": 2.91736860283402,
-    "bearing": "251.871341032653",
+    "distance": null,
+    "bearing": null,
     "reviews": [
         {
             "id": 1,
@@ -581,6 +588,7 @@ curl
             "booking_id": 13
         }
     ]
+  }
 }
 ```
 
@@ -588,7 +596,7 @@ This endpoint to show a vehicle.
 
 ### HTTP Request
 
-`GET /vehicle/<id>`
+`GET /vehicles/<id>`
 
 ## Review a vehicle
 
@@ -706,7 +714,7 @@ curl
   -H "Authorization: Bearer <token>"
   -H "Content-Type: application/json"
   -X POST
-  -d '{"vehicle_detail_id":10,"year":2014,"transmission":"Auto","color":"Green","plate_num":"WUV 3271","is_available":true,"description":"It is very comfortable to ride in it. I think people will love the ride experience in a this car. Great gas saver especially when you have to do a lot of driving. Wish you enjoy the trip. No smoking or pets please! Safe drive.","roadtax":"base64String","insurance_covernote":"base64String","address":"Taman Sri Manja Petaling Jaya Selangor Malaysia","latitude":3.075213,"longitude":101.6469241}'
+  -d '{"vehicle_detail_id":10,"year":2014,"transmission":"Auto","color":"Green","plate_num":"WUV 3271","is_available":true,"description":"It is very comfortable to ride in it. I think people will love the ride experience in a this car. Great gas saver especially when you have to do a lot of driving. Wish you enjoy the trip. No smoking or pets please! Safe drive.","roadtax":"","insurance_covernote":"","address":"Taman Sri Manja Petaling Jaya Selangor Malaysia","latitude":3.075213,"longitude":101.6469241}'
   ENDPOINT
 ```
 
@@ -714,19 +722,22 @@ curl
 
 ```json
 {
-    "id": 509,
+  "status": true,
+  "message": "Vehicle successfully created",
+  "vehicle": {
+    "id": 28,
     "vehicle_detail_id": 10,
-    "user_id": 145,
+    "user_id": 15,
     "is_insurance_valid": null,
     "year": 2014,
     "transmission": "Auto",
-    "color": "White",
-    "plate_num": "WA 9415 U",
-    "is_verified": true,
+    "color": "Green",
+    "plate_num": "WUV 3271",
+    "is_verified": false,
     "is_available": true,
-    "created_at": "2016-12-13T14:07:56.757+08:00",
-    "updated_at": "2016-12-13T14:07:56.757+08:00",
-    "description": "This is car description.",
+    "created_at": "2017-01-08T11:41:09.956+08:00",
+    "updated_at": "2017-01-08T11:41:09.956+08:00",
+    "description": "It is very comfortable to ride in it. I think people will love the ride experience in a this car. Great gas saver especially when you have to do a lot of driving. Wish you enjoy the trip. No smoking or pets please! Safe drive.",
     "roadtax": {
         "url": "http://.../file.jpg",
         "thumb": {
@@ -739,32 +750,14 @@ curl
             "url": "http://.../file.jpg"
         }
     },
-    "address": "NO. 26/2, JALAN PJS 3/34, TAMAN SRI MANJA 46000, PETALING JAYA",
-    "latitude": 3.0748967,
-    "longitude": 101.6438697,
+    "address": "Taman Sri Manja Petaling Jaya Selangor Malaysia",
+    "latitude": 3.075213,
+    "longitude": 101.6469241,
     "view_count": 0,
-    "distance": 2.91736860283402,
-    "bearing": "251.871341032653",
-    "reviews": [
-        {
-            "id": 1,
-            "review_for": "",
-            "comment": "This car is awesome",
-            "created_at": "2016-12-13T14:07:56.757+08:00",
-            "updated_at": "2016-12-13T14:07:56.757+08:00",
-            "rating": 3,
-            "booking_id": 11
-        },
-        {
-            "id": 2,
-            "review_for": "",
-            "comment": "Joe is a friendly owner. His car is a badass supercar. Will repeat my booking for sure!",
-            "created_at": "2016-12-13T14:07:56.757+08:00",
-            "updated_at": "2016-12-13T14:07:56.757+08:00",
-            "rating": 4.5,
-            "booking_id": 13
-        }
-    ]
+    "distance": null,
+    "bearing": null,
+    "reviews": []
+  }
 }
 ```
 
@@ -772,7 +765,7 @@ This endpoint to create new vehicle
 
 ### HTTP Request
 
-`POST /user/<id>/vehicle/new`
+`POST /users/<id>/vehicles`
 
 ## Update vehicle details
 
